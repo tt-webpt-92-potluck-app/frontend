@@ -9,27 +9,11 @@ const NewEventForm = (props) => {
   //Empty event
   const emptyEvent = {
     eventTitle: "",
-    friendsList: [
-      {
-        name: "",
-        email: "",
-      },
-    ],
-    date: "",
-    time: "",
+    friendsList: [],
+    dateTime: "",
     location: "",
-    foodItems: [
-      {
-        itemName: "",
-        fulfilled: false,
-      },
-    ],
-    photos: [
-      {
-        src: "",
-        title: "",
-      },
-    ],
+    foodItems: [],
+    photos: [],
   };
   const [newEvent, setNewEvent] = useState({ emptyEvent });
   const handleChange = () => {
@@ -51,7 +35,46 @@ const NewEventForm = (props) => {
         />
       </FormGroup>
       <FormGroup>
-          <Label for=''></Label>
+        <Label for="friendsList">Guests (include your email!)</Label>
+        <Input
+          type="text"
+          name="friendsList"
+          id="friendsList"
+          onChange={handleChange}
+          placeholder="enter email addresses only separated by a comma."
+          required
+        />
+      </FormGroup>
+      <FormGroup>
+        <Label for="date">Date & Time</Label>
+        <Input
+          type="datetime-local"
+          name="date"
+          id="date"
+          onChange={handleChange}
+          required
+        />
+      </FormGroup>
+      <FormGroup>
+        <Label for="location">Location</Label>
+        <Input
+          type="text"
+          name="location"
+          id="location"
+          onChange={handleChange}
+          required
+        />
+      </FormGroup>
+      <FormGroup>
+        <Label for="foodItems">Potluck Items needed</Label>
+        <Input
+          type="text"
+          name="foodItems"
+          id="foodItems"
+          onChange={handleChange}
+          placeholder="List items with a comma separating them."
+          required
+        />
       </FormGroup>
     </Form>
   );
