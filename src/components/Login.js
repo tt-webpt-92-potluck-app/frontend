@@ -1,72 +1,71 @@
-import React, { useState } from 'react';
-import { Form, FormGroup, Label, Input,Button } from 'reactstrap';
+import React, { useState } from "react";
 import axios from "axios";
+import { Button, Form, FormGroup, Label, Input } from "reactstrap";
+import styled from "styled-components";
+
+const LoginContainer = styled.div`
+  padding: 2rem;
+  border: 3px solid black;
+  border-radius: 20px;
+  margin: 1rem auto;
+`
 
 const initialState = {
-    username: "",
-    password: "",
-    email: ""
+  username: "",
+  password: ""
 };
 
-const SignUp = () => {
-    const [newUser, setNewUser] = useState(initialState);
+const Login = (props) => {
+  const [loginData, setLoginData] = useState(initialState);
 
-    const changeHandler = (event) => {
-        setNewUser({
-            ...newUser,
-            [event.target.name]: event.target.value
-        });
-    };
+  const changeHandler = (event) => {
+    setLoginData({
+      ...loginData,
+      [event.target.name]: event.target.value
+    });
+  };
 
-    const submitForm = (event) => {
-        event.preventDefaul();
-        console.log(newUser);
-        //axios post 
-    };
+  const submitLogin = (event) => {
+    event.preventDefault();
+	//console.log(loginData);
+	axios.post("http://", loginData) // need api
+		.then((res) => {
+			//console.log("submitted login:", res)
+			localStorage.setItem("token", res.data.payload);
+			props.history.push("/Home") // need private route path
+		})
+    
+  };
 
-    return (
-        <>
-          <Form onSubmit={submitForm}>
-            <FormGroup>
-              <Label for="username">Username</Label>
-              <Input
-                type="text"
-                name="username"
-                id="username"
-                placeholder="enter your username"
-                value={newUser.username}
-                onChange={changeHandler}
-                required
-              />
-            </FormGroup>
-            <FormGroup>
-              <Label for="password">Password</Label>
-              <Input
-                type="password"
-                name="password"
-                id="password"
-                placeholder="enter your password"
-                value={newUser.password}
-                onChange={changeHandler}
-                required
-              />
-            </FormGroup>
-            <FormGroup>
-              <Label for="email">Email</Label>
-              <Input
-                type="email"
-                name="email"
-                id="email"
-                placeholder="enter your email"
-                value={newUser.email}
-                onChange={changeHandler}
-                required
-              />
-            </FormGroup>
-            <Button>Submit</Button>
-          </Form>
-        </>
-      );
+  return (
+    <>
+      <LoginContainer>
+      <Form onSubmit={submitLogin}>
+        <FormGroup>
+          <Label for="username">Username</Label>
+          <Input
+            type="text"
+            id="username"
+            name="username"
+            onChange={changeHandler}
+            value={loginData.username}
+          />
+        </FormGroup>
+        <FormGroup>
+          <Label for="password">Password</Label>
+          <Input
+            type="password"
+            id="password"
+            name="password"
+            onChange={changeHandler}
+            value={loginData.password}
+          />
+        </FormGroup>
+        <Button type="submit">Login</Button>
+      </Form>
+    </LoginContainer>
+    </>
+  )
 };
 
-export default SignUp;
+export default Login;
