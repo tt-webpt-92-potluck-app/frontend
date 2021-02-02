@@ -1,8 +1,9 @@
-import logo from './logo.svg';
+import React, { useContext, useState } from "react";
 import './App.css';
 import Login from "./components/Login/Login"
 import SignUp from "./components/SignUp"
 import Navigation from "./components/navagation/navagation"
+
 import EventContext, { EventProvider } from "./contexts/EventContext";
 import { UserProvider } from "./contexts/UserContext";
 

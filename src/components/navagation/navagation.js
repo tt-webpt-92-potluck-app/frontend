@@ -15,7 +15,7 @@ import {
 import "bootstrap/dist/css/bootstrap.css";
 import "./navagation.css";
 import UserContext from "../../contexts/UserContext";
-import Logo from"..\photos\kachori-logo-kota-chaat-food-paneer-butter-masala.jpg"
+import Logo from "../../components/logo.jpg"
 
 const Navigation = props => {
   const [isOpen, setIsOpen] = useState(false);
