@@ -13,7 +13,7 @@ import {
   DropdownItem
 } from "reactstrap";
 import "bootstrap/dist/css/bootstrap.css";
-import "./Navigation.css";
+import "./navagation.css";
 import UserContext from "../../contexts/UserContext";
 import Logo from"..\photos\kachori-logo-kota-chaat-food-paneer-butter-masala.jpg"
 

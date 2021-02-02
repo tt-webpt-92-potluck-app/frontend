@@ -2,7 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import Login from "./components/Login/Login"
 import SignUp from "./components/SignUp"
-import Navigation from "./components/Navigation/Navigation";
+import Navigation from "./components/navagation/navagation"
 import EventContext, { EventProvider } from "./contexts/EventContext";
 import { UserProvider } from "./contexts/UserContext";
 
