@@ -11,7 +11,7 @@ function App() {
   const event = useContext(EventContext);
   const [user, setUser] = useState({
     username: localStorage.getItem("username"),
-    user_id: localStorage.getItem("user_id")
+    id: localStorage.getItem("id")
   });
 
   return (
