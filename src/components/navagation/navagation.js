@@ -17,7 +17,7 @@ import "./navagation.css";
 import UserContext from "../../contexts/UserContext";
 import Logo from "../../components/logo.jpg"
 
-const Navigation = props => {
+const Navagation = props => {
   const [isOpen, setIsOpen] = useState(false);
   const { user } = useContext(UserContext);
   const toggle = () => setIsOpen(!isOpen);
@@ -63,4 +63,4 @@ const Navigation = props => {
 };
 
 
-export default Navigation;
+export default Navagation;
