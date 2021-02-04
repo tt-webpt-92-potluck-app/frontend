@@ -1,16 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Form, FormGroup, Label, Input,Button } from 'reactstrap';
 import axios from "axios";
+import UserContext from '../contexts/UserContext';
 
 const initialState = {
     username: "",
     password: "",
-	email: "",
-	full_name:""
+	  // email: "",
+    firstname:"",
+    lastname:""
 };
 
-const SignUp = () => {
+const SignUp = (props) => {
     const [newUser, setNewUser] = useState(initialState);
+    const user = useContext(UserContext);
 
     const changeHandler = (event) => {
         setNewUser({
@@ -20,9 +23,17 @@ const SignUp = () => {
     };
 
     const submitForm = (event) => {
-        event.preventDefaul();
-        console.log(newUser);
-        //axios post 
+        event.preventDefault();
+        axios.post("https://tt-webpt-92-potluck-app.herokuapp.com/api/register", newUser)
+          .then((res) => {
+            user.username = newUser.username;
+            localStorage.setItem("username", newUser.username);
+            console.log(res.data);
+            props.history.push("/Home");
+          })
+          .catch((err) => {
+            console.error("something went wrong: ", err);
+          })
     };
 
     return (
@@ -52,19 +63,31 @@ const SignUp = () => {
                 required
               />
             </FormGroup>
-			<FormGroup>
-              <Label for="full_name">Username</Label>
-              <Input
-                type="text"
-                name="full_name"
-                id="full_name"
-                placeholder="enter your full name"
-                value={newUser.full_name}
-                onChange={changeHandler}
-                required
-              />
-			</FormGroup>
             <FormGroup>
+                    <Label for="firstname">First name</Label>
+                    <Input
+                      type="text"
+                      name="firstname"
+                      id="firstname"
+                      placeholder="enter your first name"
+                      value={newUser.firstname}
+                      onChange={changeHandler}
+                      required
+                    />
+            </FormGroup>
+            <FormGroup>
+                    <Label for="lastname">Last name</Label>
+                    <Input
+                      type="text"
+                      name="lastname"
+                      id="lastname"
+                      placeholder="enter your last name"
+                      value={newUser.lastname}
+                      onChange={changeHandler}
+                      required
+                    />
+            </FormGroup>
+            {/* <FormGroup>
               <Label for="email">Email</Label>
               <Input
                 type="email"
@@ -75,8 +98,8 @@ const SignUp = () => {
                 onChange={changeHandler}
                 required
               />
-            </FormGroup>
-            <Button>Submit</Button>
+            </FormGroup> */}
+            <Button type="submit">Submit</Button>
           </Form>
         </>
       );

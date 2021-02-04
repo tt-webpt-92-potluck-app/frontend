@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import axios from "axios";
 import { Button, Form, Input, Card, Container, Col } from "reactstrap";
 import 'bootstrap/dist/css/bootstrap.css'
 import "./Login.css";
+import UserContext from "../../contexts/UserContext";
 
 const initialState = {
   username: "",
@@ -10,7 +11,9 @@ const initialState = {
 };
 
 const Login = (props) => {
+
   const [loginData, setLoginData] = useState(initialState);
+  const { setUser } = useContext(UserContext);
 
   const changeHandler = (event) => {
     setLoginData({
@@ -21,13 +24,22 @@ const Login = (props) => {
 
   const submitLogin = (event) => {
     event.preventDefault();
-	//console.log(loginData);
-	axios.post("http://", loginData) // need api
-		.then((res) => {
-			//console.log("submitted login:", res)
-			localStorage.setItem("token", res.data.payload);
-			props.history.push("/Home") // need private route path
-		})
+	  // console.log(loginData);
+    axios.post("https://tt-webpt-92-potluck-app.herokuapp.com/api/login", loginData)
+      .then((res) => {
+        console.log("submitted login:", res.data)
+        localStorage.setItem("token", res.data.token);
+        localStorage.setItem("username", loginData.username);
+        localStorage.setItem("id", res.data.id);
+        setUser({
+          username: loginData.username,
+          id: res.data.id
+        });
+        // props.history.push("/Home") // need private route path
+      })
+      .catch((err) => {
+        console.error("something went wrong: ", err);
+      })
     
   };
 
