@@ -18,8 +18,15 @@ function App() {
 	return (
 	  <EventProvider value={event}>
 		<UserProvider value={{user, setUser}}>
-		  <div className="App">
-		  </div>
+    <div className="App">
+          <Navigation />
+          <Switch>
+            <PrivateRoute exact path="/Home" component={Home} />
+            <Route exact path="/" component={LoginFunctional} />
+            <Route exact path="/SignUp" component={SignUp} />
+            <PrivateRoute exact path="/CreateEvent" component={CreateEvent} />
+          </Switch>
+        </div>
 		</UserProvider>
 	  </EventProvider>
 	);

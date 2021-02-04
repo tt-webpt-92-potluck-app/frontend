@@ -37,9 +37,6 @@ const Navigation = props => {
             <NavLink href="">Home</NavLink>
           </NavItem>
           <NavItem>
-            <NavLink href="">Calendar</NavLink>
-          </NavItem>
-          <NavItem>
             <NavLink href="">Events</NavLink>
           </NavItem>
           <NavItem>
@@ -55,11 +52,6 @@ const Navigation = props => {
               </DropdownItem>
               <DropdownItem>
                 <NavLink href="/">Login</NavLink>
-              </DropdownItem>
-              <DropdownItem>
-             <NavLink href={`/Users/${user.user_id}/EditAccount`}>
-                  Edit Account
-                </NavLink>
               </DropdownItem>
               {/* <DropdownItem divider /> */}
             </DropdownMenu>
