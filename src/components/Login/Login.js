@@ -4,6 +4,8 @@ import { Button, Form, Input, Card, Container, Col } from "reactstrap";
 import 'bootstrap/dist/css/bootstrap.css'
 import "./Login.css";
 import UserContext from "../../contexts/UserContext";
+import Navagation from "../navagation/navagation";
+import ptimg from "./ptimg.svg"
 
 const initialState = {
   username: "",
@@ -45,9 +47,11 @@ const Login = (props) => {
 
   return (
     <>
+    <Navagation />
       <Container className="loginContainer">
         <Col>
         <Card className="loginCard">
+          <img src={ptimg} alt="logo" className="ptlogo" />
           <h1 className="loginHeader">Login to your account</h1>
           <Form onSubmit={submitLogin}>
               <Input
