@@ -3,7 +3,10 @@ import './App.css';
 import { Route, Switch } from "react-router-dom";
 import Login from "./components/Login/Login"
 import SignUp from "./components/SignUp"
-
+import PrivateRoute from "./components/PrivateRoute"
+import Navagation from "./components/navagation/navagation"
+import EventContext, { EventProvider } from "./contexts/EventContext";
+import { UserProvider } from "./contexts/UserContext";
 
 function App() {
 
@@ -18,6 +21,7 @@ function App() {
 		<UserProvider value={{user, setUser}}>
     <div className="App">
   <Navagation />
+
  </div>
 
 		</UserProvider>
