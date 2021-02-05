@@ -19,6 +19,7 @@ function App() {
 	  <EventProvider value={event}>
 		<UserProvider value={{user, setUser}}>
     	<div className="App">
+			<Navagation/>
  		</div>
 		</UserProvider>
 	  </EventProvider>
