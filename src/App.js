@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import './App.css';
 import { Route, Switch } from "react-router-dom";
 import Login from "./components/Login/Login"
-import SignUp from "./components/SignUp"
+import SignUp from "./components/SignUp/SignUp"
 import Navagation from "./components/navagation/navagation"
 //import PrivateRoute from "./components/PrivateRoute";
 
@@ -14,16 +14,14 @@ function App() {
 	const event = useContext(EventContext);
 	const [user, setUser] = useState({
 	  username: localStorage.getItem("username"),
-	  user_id: localStorage.getItem("user_id")
+	  id: localStorage.getItem("id")
 	});
 
 	return (
 	  <EventProvider value={event}>
 		<UserProvider value={{user, setUser}}>
-    <div className="App">
-  <Navagation />
- </div>
-
+    	<div className="App">
+ 		</div>
 		</UserProvider>
 	  </EventProvider>
 	);
