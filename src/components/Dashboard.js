@@ -2,13 +2,12 @@ import React, {useState, useEffect} from "react";
 import GuestView from "./GuestView";
 import OrganizerView from "./OrganizerView";
 import NewEventForm from "./Potlucks/NewEventForm";
+import EventContext from '../contexts/EventContext';
+import UserContext from '../contexts/UserContext';
 
-//need to GET users and events from the server and then create the rules to direct if statements to the GuestView and OrganizerView.
+//need to GET users and events from the server (EventContext & UserContext) and then create the rules to direct if statements to the GuestView and OrganizerView.
 //Then the state will be mapped to props for those components to use.
 const Dashboard = (props) => {
-    const getUsers = () => {
-
-    }
 const [events, setEvents] = useState([]);
 useEffect(() => {
     const id = 
