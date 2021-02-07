@@ -1,5 +1,6 @@
 import React, { useEffect, setState } from "react";
 import axios from "axios";
+import { FormData, Form } from "reactstrap";
 
 export default function EventCard(props) {
   const { potlucks, setPotlucks } = props;

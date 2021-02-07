@@ -23,6 +23,15 @@ const NewEventForm = () => {
       [e.target.name]: e.target.value
     });
   };
+  const newPotluck = {
+    id: Date.now(),
+    name: formValues.eventTitle,
+    firstName: formValues.firstName,
+    lastName: formValues.lastName,
+    location: formValues.location,
+    time: formValues.time,
+    date: formValues.date,
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
     const newPotluck = {
@@ -46,6 +55,7 @@ const NewEventForm = () => {
     })
     //setEvent([...event, newPotluck]);
   };
+  setPotlucks([...potlucks, newPotluck]);
   return (
     <Form onSubmit={handleSubmit}>
       <FormGroup>
@@ -111,6 +121,6 @@ const NewEventForm = () => {
       </FormGroup>
       <Button type="submit">Submit</Button>
     </Form>
-  )
-  };
+  );
+};
 export default NewEventForm;
