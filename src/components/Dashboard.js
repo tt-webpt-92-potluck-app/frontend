@@ -35,7 +35,6 @@ function Dashboard() {
         console.log(`Error on Dashboard GET data: ${err.response}`);
       });
   };
-  const getUserInfo = () => {};
 
   //collapsable "Add New Event" Form:
   const [isOpen, setIsOpen] = useState(false);
