@@ -1,6 +1,6 @@
 import React from "react";
 import EventCard from "./Potlucks/EventCard";
-import NewEvent from './Potlucks/NewEventForm';
+import NewEvent from "./Potlucks/NewEventForm";
 
 const OrganizerView = () => {
   return (
