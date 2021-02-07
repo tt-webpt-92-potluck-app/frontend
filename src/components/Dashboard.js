@@ -7,6 +7,15 @@ import EventContext from "../contexts/EventContext";
 import UserContext from "../contexts/UserContext";
 import { Collapse } from "reactstrap";
 import axios from "axios";
+import styled from "styled-components";
+
+const CreateNewBtn = styled.button`
+  padding: 1rem;
+  background-color: orange;
+  color: white;
+  &:hover {
+  }
+`;
 
 //need to GET users and events from the server (EventContext & UserContext) and then create the rules to direct if statements to the GuestView and OrganizerView.
 //Then the state will be mapped to props for those components to use.
@@ -17,7 +26,7 @@ function Dashboard() {
 
   const getData = () => {
     axiosWithAuth()
-      .get("/api/events")
+      .get("/potlucks")
       .then((res) => {
         console.log(`Dashboard response: ${res.data}`);
         setEvents(res.data);
@@ -35,14 +44,15 @@ function Dashboard() {
   return (
     <div className="internalDash">
       <div className="dashNav">
+        <h3>Welcome {username}</h3>
         <h2>Find a Potluck:</h2>
-        <button>Guest Page</button>
+        <button onClick>Guest Page</button>
       </div>
       <div className="dashNav">
         <h3>Edit your Potluck Event:</h3>
         <button>Event Organizer Page</button>
       </div>
-      <button onClick={toggle}>Create a New Potluck</button>
+      <CreateNewBtn onClick={toggle}>Create a New Potluck</CreateNewBtn>
       <Collapse isOpen={isOpen}>
         <NewEventForm />
       </Collapse>
