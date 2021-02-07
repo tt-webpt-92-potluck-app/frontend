@@ -29,13 +29,13 @@ const Login = (props) => {
 	  // console.log(loginData);
     axios.post("https://tt-webpt-92-potluck-app.herokuapp.com/api/login", loginData)
       .then((res) => {
-        console.log("submitted login:", res.data)
+        console.log("submitted login:", res)
+        //console.log(loginData);
         localStorage.setItem("token", res.data.token);
         localStorage.setItem("username", loginData.username);
-        localStorage.setItem("id", res.data.id);
+        localStorage.setItem("user_id", res.data.id);
         setUser({
-          username: loginData.username,
-          id: res.data.id
+          username: loginData.username
         });
         // props.history.push("/Home") // need private route path
       })

@@ -6,6 +6,8 @@ import SignUp from "./components/SignUp/SignUp"
 import Navagation from "./components/navagation/navagation"
 import EventContext, { EventProvider } from "./contexts/EventContext";
 import { UserProvider } from "./contexts/UserContext";
+import Organizer from "./components/OrganizerComp/Organizer";
+import NewEventForm from "./components/Potlucks/NewEventForm";
 
 function App() {
 
@@ -20,6 +22,10 @@ function App() {
 		<UserProvider value={{user, setUser}}>
     	<div className="App">
 			<Navagation/>
+			{/* <Organizer/> */}
+			<NewEventForm/>
+			<Login/>
+			<SignUp/>
  		</div>
 		</UserProvider>
 	  </EventProvider>
