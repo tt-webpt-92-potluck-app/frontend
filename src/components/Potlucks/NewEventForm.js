@@ -21,28 +21,31 @@ const NewEventForm = () => {
       [e.target.name]: e.target.value,
     });
   };
+  const newPotluck = {
+    id: Date.now(),
+    name: formValues.eventTitle,
+    firstName: formValues.firstName,
+    lastName: formValues.lastName,
+    location: formValues.location,
+    time: formValues.time,
+    date: formValues.date,
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
-    const newPotluck = {
-      id: Date.now(),
-      name: formValues.eventTitle,
-      firstName: formValues.firstName,
-      lastName: formValues.lastName,
-      location: formValues.location,
-      time: formValues.time,
-      date: formValues.date,
-    };
-    axios.post("https://tt-webpt-92-potluck-app.herokuapp.com/potlucks", newPotluck)
-    .then((res) => {
-      console.log(`Post New Event Success: ${res.data}`)
-      setFormValues(initialFormValues);
-    })
-    .catch((err) => {
-      console.log(`Error on POST for new Event ${err}`)
-    })
-    };
-    setPotlucks([...potlucks, newPotluck]);
+    axios
+      .post(
+        "https://tt-webpt-92-potluck-app.herokuapp.com/potlucks",
+        newPotluck
+      )
+      .then((res) => {
+        console.log(`Post New Event Success: ${res.data}`);
+        setFormValues(initialFormValues);
+      })
+      .catch((err) => {
+        console.log(`Error on POST for new Event ${err}`);
+      });
   };
+  setPotlucks([...potlucks, newPotluck]);
   return (
     <Form onSubmit={handleSubmit}>
       <FormGroup>
@@ -106,6 +109,6 @@ const NewEventForm = () => {
         />
       </FormGroup>
     </Form>
-  )
-  };
+  );
+};
 export default NewEventForm;
