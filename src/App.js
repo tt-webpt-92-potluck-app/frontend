@@ -22,10 +22,10 @@ function App() {
 		<UserProvider value={{user, setUser}}>
     	<div className="App">
 			<Navagation/>
-			{/* <Organizer/> */}
-			<NewEventForm/>
+			<Organizer/>
+			{/* <NewEventForm/>
 			<Login/>
-			<SignUp/>
+			<SignUp/> */}
  		</div>
 		</UserProvider>
 	  </EventProvider>

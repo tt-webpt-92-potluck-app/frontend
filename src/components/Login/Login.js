@@ -33,7 +33,7 @@ const Login = (props) => {
         //console.log(loginData);
         localStorage.setItem("token", res.data.token);
         localStorage.setItem("username", loginData.username);
-        localStorage.setItem("user_id", res.data.id);
+        localStorage.setItem("id", res.data.id);
         setUser({
           username: loginData.username
         });
