@@ -1,47 +1,50 @@
-import react, { useState, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
 import axios from "axios";
+import { axiosWithAuth } from "../../utils/axiosWithAuth";
+import EventContext from "../../contexts/EventContext";
 
-const initialFormValues = {
+const initialValues = {
   firstName: "",
   lastName: "",
   name: "",
   location: "",
   time: "",
-  date: "",
+  date: ""
 };
-const initialPotluckEvents = [];
 
 const NewEventForm = () => {
-  const [potlucks, setPotlucks] = useState(initialFormValues);
-  const [formValues, setFormValues] = useState(initialPotluckEvents);
+  const [potlucks, setPotlucks] = useState(initialValues);
+  // const {event, setEvent} = useContext(EventContext);
+  //const [formValues, setFormValues] = useState(initialPotluckEvents);
   const handleChange = (e) => {
-    setFormValues({
-      ...formValues,
-      [e.target.name]: e.target.value,
+    setPotlucks({
+      ...potlucks,
+      [e.target.name]: e.target.value
     });
   };
   const handleSubmit = (e) => {
     e.preventDefault();
     const newPotluck = {
       id: Date.now(),
-      name: formValues.eventTitle,
-      firstName: formValues.firstName,
-      lastName: formValues.lastName,
-      location: formValues.location,
-      time: formValues.time,
-      date: formValues.date,
+      name: potlucks.eventTitle,
+      firstName: potlucks.firstName,
+      lastName: potlucks.lastName,
+      location: potlucks.location,
+      time: potlucks.time,
+      date: potlucks.date
     };
-    axios.post("https://tt-webpt-92-potluck-app.herokuapp.com/potlucks", newPotluck)
+    axiosWithAuth()
+    .post(`/potlucks`, newPotluck)
     .then((res) => {
       console.log(`Post New Event Success: ${res.data}`)
-      setFormValues(initialFormValues);
+      setPotlucks(initialValues);
     })
     .catch((err) => {
       console.log(`Error on POST for new Event ${err}`)
+      console.log("submitted data: " , newPotluck);
     })
-    };
-    setPotlucks([...potlucks, newPotluck]);
+    //setEvent([...event, newPotluck]);
   };
   return (
     <Form onSubmit={handleSubmit}>
@@ -60,6 +63,7 @@ const NewEventForm = () => {
         <Input
           type="text"
           name="firstName"
+          id="firstName"
           value={potlucks.firstName}
           onChange={handleChange}
           required
@@ -105,6 +109,7 @@ const NewEventForm = () => {
           required
         />
       </FormGroup>
+      <Button type="submit">Submit</Button>
     </Form>
   )
   };
