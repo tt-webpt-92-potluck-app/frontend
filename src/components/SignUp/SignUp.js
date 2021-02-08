@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import { Form, FormGroup, Label, Input,Button, Card, Container } from 'reactstrap';
 import axios from "axios";
 import UserContext from "../../contexts/UserContext";
-import Navagation from "../navagation/navagation";
+import Navigation from "../navagation/navagation";
 import "./SignUp.css"
 import ptimg from "../Login/ptimg.svg"
 
@@ -43,7 +43,7 @@ const SignUp = (props) => {
 
     return (
         <>
-        <Navagation/>
+        <Navigation/>
         <Container className="signUpContainer">
           <Card className="signUpCard">
             <img src={ptimg} alt="logo" className="ptlogo"/>

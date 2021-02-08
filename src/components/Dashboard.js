@@ -39,7 +39,7 @@ function Dashboard() {
   //collapsable "Add New Event" Form:
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
-
+  
   return (
     <div className="internalDash">
       <div className="dashNav">
