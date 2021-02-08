@@ -47,6 +47,9 @@ export default function EventCard(props) {
                 <li>{item.name}</li>;
               })}
             </ul>
+            <h4>
+              <a href="mailto:email@email.com">RSVP</a>
+            </h4>
           </Card>
         );
       })}
