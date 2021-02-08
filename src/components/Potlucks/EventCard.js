@@ -1,62 +1,65 @@
 import React, { useEffect, setState } from "react";
 import axios from "axios";
-import { FormGroup, Form } from "reactstrap";
+import { Card, CardHeader, CardTitle, CardSubtitle } from "reactstrap";
 
 export default function EventCard(props) {
   const { potlucks, setPotlucks } = props;
   console.log(potlucks, "Event Card data");
   useEffect(() => {
     axios
-      .post("https://tt-webpt-92-potluck-app.herokuapp.com/potlucks")
+      .get("https://tt-webpt-92-potluck-app.herokuapp.com/potluck")
       .then((res) => {
         setPotlucks(res.data);
         console.log(res.data);
       })
       .catch((err) => {
-        console.log(err, `Event Card POST error`);
+        console.log(err, `Event Card GET error potlucks`);
       });
   });
 
-  const deleteEvent = (eventID) => {
+  const { foodList, setFoodList } = setState([]);
+  useEffect(() => {
     axios
-      .delete(
-        `https://tt-webpt-92-potluck-app.herokuapp.com/potlucks/${eventID}`
-      )
+      .get("https://tt-webpt-92-potluck-app.herokuapp.com/food")
       .then((res) => {
-        const newList = potlucks.filter((potluck) => {
-          return potluck.id !== res.data;
-        });
+        setFoodList(res.data);
+      })
+      .catch((err) => {
+        console.log(err, `EventCard error GET foodList`);
       });
-    setPotlucks(newList).catch((err) => {
-      console.log(err, "Issue with deleteEvent in EventCard.");
-    });
-  };
-  return (
-    <Form>
+  });
 
-<FormGroup>
-        {potlucks.map((potluck) => {
-          return (
-            <div key={potluck.id}>
-              <h2>{potluck.eventName}</h2>
-              <p>Location: {potluck.location}</p>
-              <p>Date: {potluck.date}</p>
-              <p>Time: {potluck.time}</p>
-              <p>
-                Host Name: {potluck.firstName} {potluck.lastName}
-              </p>
-            </div>
-          );
-        })}
-        {/*Delete button? Do we want this?
+  return (
+    <div>
+      {potlucks.map((potluck) => {
+        return (
+          <Card key={potluck.id}>
+            <CardHeader>{potluck.eventName}</CardHeader>
+            <CardTitle>Location: {potluck.location}</CardTitle>
+            <CardSubtitle>Date: {potluck.date}</CardSubtitle>
+            <CardSubtitle>Time: {potluck.time}</CardSubtitle>
+            <CardSubtitle>
+              Host Name: {potluck.firstName} {potluck.lastName}
+            </CardSubtitle>
+            <CardSubtitle>Food to Bring:</CardSubtitle>
+            <ul>
+              {foodList.map((item) => {
+                <li>{item.name}</li>;
+              })}
+            </ul>
+            <h4>
+              <a href="mailto:email@email.com">RSVP</a>
+            </h4>
+          </Card>
+        );
+      })}
+      {/*Delete button? Do we want this?
         <button onClick = (e) => {
           e.stopPropagation()
           e.preventDefault()
           this.triggerDelete(permit);
           deleteEvent(potluck.id)>Delete this Event</button>
         */}
-
-    </FormGroup>
-    </Form>
+    </div>
   );
 }

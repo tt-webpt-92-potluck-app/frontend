@@ -1,10 +1,11 @@
 import React from "react";
 import EventCard from "./Potlucks/EventCard";
 
-const GuestView = () => {
+const GuestView = (props) => {
+  
   return (
     <>
-      <p>Guest View</p>
+      <h2>Events you're invited to:</h2>
       <EventCard />
     </>
   );

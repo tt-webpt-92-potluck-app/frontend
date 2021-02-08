@@ -10,7 +10,7 @@ const initialValues = {
   name: "",
   location: "",
   time: "",
-  date: ""
+  date: "",
 };
 
 const NewEventForm = () => {
@@ -20,17 +20,17 @@ const NewEventForm = () => {
   const handleChange = (e) => {
     setPotlucks({
       ...potlucks,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
   const newPotluck = {
     id: Date.now(),
-    name: formValues.eventTitle,
-    firstName: formValues.firstName,
-    lastName: formValues.lastName,
-    location: formValues.location,
-    time: formValues.time,
-    date: formValues.date,
+    name: potlucks.eventTitle,
+    firstName: potlucks.firstName,
+    lastName: potlucks.lastName,
+    location: potlucks.location,
+    time: potlucks.time,
+    date: potlucks.date,
   };
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -41,18 +41,18 @@ const NewEventForm = () => {
       lastName: potlucks.lastName,
       location: potlucks.location,
       time: potlucks.time,
-      date: potlucks.date
+      date: potlucks.date,
     };
     axiosWithAuth()
-    .post(`/potlucks`, newPotluck)
-    .then((res) => {
-      console.log(`Post New Event Success: ${res.data}`)
-      setPotlucks(initialValues);
-    })
-    .catch((err) => {
-      console.log(`Error on POST for new Event ${err}`)
-      console.log("submitted data: " , newPotluck);
-    })
+      .post(`/potluck`, newPotluck)
+      .then((res) => {
+        console.log(`Post New Event Success: ${res.data}`);
+        setPotlucks(initialValues);
+      })
+      .catch((err) => {
+        console.log(`Error on POST for new Event ${err}`);
+        console.log("submitted data: ", newPotluck);
+      });
     //setEvent([...event, newPotluck]);
   };
   setPotlucks([...potlucks, newPotluck]);
