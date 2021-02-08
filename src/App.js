@@ -10,7 +10,6 @@ import PrivateRoute from "./components/PrivateRoute";
 import Dashboard from "./components/Dashboard";
 
 
-
 function App() {
 
 	const event = useContext(EventContext);

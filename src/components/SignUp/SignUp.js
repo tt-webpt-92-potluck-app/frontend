@@ -30,9 +30,11 @@ const SignUp = (props) => {
         axios.post("https://tt-webpt-92-potluck-app.herokuapp.com/api/register", newUser)
           .then((res) => {
             user.username = newUser.username;
+            user.id = res.data.id;
             localStorage.setItem("username", newUser.username);
+            localStorage.setItem("id", user.id);
             console.log(res.data);
-            props.history.push("/Home");
+            //props.history.push("/Home");
           })
           .catch((err) => {
             console.error("something went wrong: ", err);
