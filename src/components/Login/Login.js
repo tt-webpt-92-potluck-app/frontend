@@ -4,7 +4,7 @@ import { Button, Form, Input, Card, Container, Col } from "reactstrap";
 import 'bootstrap/dist/css/bootstrap.css'
 import "./Login.css";
 import UserContext from "../../contexts/UserContext";
-import Navagation from "../navagation/navagation";
+import Navigation from "../navagation/navagation";
 import ptimg from "./ptimg.svg"
 
 const initialState = {
@@ -42,12 +42,12 @@ const Login = (props) => {
       .catch((err) => {
         console.error("something went wrong: ", err);
       })
-    
+
   };
 
   return (
     <>
-    <Navagation />
+    <Navigation />
       <Container className="loginContainer">
         <Col>
         <Card className="loginCard">

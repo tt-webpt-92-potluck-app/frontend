@@ -10,7 +10,7 @@ import UserContext from '../contexts/UserContext';
 const Dashboard = (props) => {
 const [events, setEvents] = useState([]);
 useEffect(() => {
-    const id = 
+    const id = ""
 })
   return (
       <div className="internalDash">

@@ -13,11 +13,11 @@ import {
   DropdownItem
 } from "reactstrap";
 import "bootstrap/dist/css/bootstrap.css";
-import "./navagation.css";
+import "./navigation.css";
 import UserContext from "../../contexts/UserContext";
 import Logo from "../../components/logo.jpg"
 
-const Navagation = props => {
+const Navigation = props => {
   const [isOpen, setIsOpen] = useState(false);
   const { user } = useContext(UserContext);
   const toggle = () => setIsOpen(!isOpen);
@@ -34,13 +34,13 @@ const Navagation = props => {
       <Collapse isOpen={isOpen} navbar>
         <Nav className="ml-auto" navbar>
           <NavItem>
-            <NavLink href="">Home</NavLink>
+            <NavLink href="/Home">Home</NavLink>
           </NavItem>
           <NavItem>
-            <NavLink href="">Events</NavLink>
+            <NavLink href="/Events">Events</NavLink>
           </NavItem>
           <NavItem>
-            <NavLink href="">Users</NavLink>
+            <NavLink href="/Users">Users</NavLink>
           </NavItem>
           <UncontrolledDropdown nav inNavbar>
             <DropdownToggle nav caret>
@@ -63,4 +63,4 @@ const Navagation = props => {
 };
 
 
-export default Navagation;
+export default Navigation;
