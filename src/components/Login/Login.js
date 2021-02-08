@@ -4,7 +4,7 @@ import { Button, Form, Input, Card, Container, Col } from "reactstrap";
 import 'bootstrap/dist/css/bootstrap.css'
 import "./Login.css";
 import UserContext from "../../contexts/UserContext";
-import Navigation from "../navagation/navagation";
+import navigation from "../navagation/navagation";
 import ptimg from "./ptimg.svg"
 
 const initialState = {
