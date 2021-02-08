@@ -16,7 +16,7 @@ const initialValues = {
 const NewEventForm = () => {
   const [potlucks, setPotlucks] = useState(initialValues);
   // const {event, setEvent} = useContext(EventContext);
-  //const [formValues, setFormValues] = useState(initialPotluckEvents);
+  // const [formValues, setFormValues] = useState(initialPotluckEvents);
   const handleChange = (e) => {
     setPotlucks({
       ...potlucks,

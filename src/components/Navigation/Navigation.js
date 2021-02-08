@@ -13,7 +13,7 @@ import {
   DropdownItem
 } from "reactstrap";
 import "bootstrap/dist/css/bootstrap.css";
-import "./navigation.css";
+import "./Navigation.css";
 import UserContext from "../../contexts/UserContext";
 import Logo from "../../components/logo.jpg"
 
