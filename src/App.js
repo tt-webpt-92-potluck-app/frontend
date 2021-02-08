@@ -23,13 +23,12 @@ function App() {
 		<UserProvider value={{user, setUser}}>
     	<div className="App">
 			<Navigation/>
-<switch>
-<PrivateRoute exact path="/Home" component={Dashboard} />
-<Route exact path="/" component={Login}/>
-<Route exact path="/SignUp" component={SignUp} />
-<PrivateRoute exact path="/Users" component={UserContext} />
-
-</switch>
+				<Switch>
+				<PrivateRoute exact path="/Home" component={Dashboard} />
+				<Route exact path="/" component={Login}/>
+				<Route exact path="/SignUp" component={SignUp} />
+				<PrivateRoute exact path="/Users" component={UserContext} />
+				</Switch>
  		</div>
 		</UserProvider>
 	  </EventProvider>

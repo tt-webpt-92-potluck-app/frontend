@@ -4,7 +4,6 @@ import { Button, Form, Input, Card, Container, Col } from "reactstrap";
 import 'bootstrap/dist/css/bootstrap.css'
 import "./Login.css";
 import UserContext from "../../contexts/UserContext";
-import Navigation from "../Navigation/Navigation";
 import ptimg from "./ptimg.svg"
 
 const initialState = {
@@ -37,7 +36,7 @@ const Login = (props) => {
         setUser({
           username: loginData.username
         });
-        // props.history.push("/Home") // need private route path
+        props.history.push("/Home") // need private route path
       })
       .catch((err) => {
         console.error("something went wrong: ", err);
@@ -47,7 +46,6 @@ const Login = (props) => {
 
   return (
     <>
-    <Navigation />
       <Container className="loginContainer">
         <Col>
         <Card className="loginCard">
