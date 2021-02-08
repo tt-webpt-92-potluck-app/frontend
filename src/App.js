@@ -1,9 +1,9 @@
 import React, { useContext, useState } from "react";
 import './App.css';
 import { Route, Switch } from "react-router-dom";
-import {Login} from "./components/Login"
-import SignUp from "./components/SignUp/SignUp"
-import navagation from "./components/navagation"
+import Login from "./components/Login/Login";
+import SignUp from "./components/SignUp/SignUp";
+import Navigation from "./components/Navigation/Navigation";
 import EventContext, { EventProvider } from "./contexts/EventContext";
 import UserContext, { UserProvider } from "./contexts/UserContext";
 import PrivateRoute from "./components/PrivateRoute";
@@ -37,13 +37,3 @@ function App() {
   }
 
   export default App;
-
- // <div className="App">
- // <Navagation />
-//   <Switch>
-//    <PrivateRoute exact path="/Home" component={Home} />
- //   <Route exact path="/" component={LoginFunctional} />
-//    <Route exact path="/SignUp" component={SignUp} />
-//    <PrivateRoute exact path="/CreateEvent" component={CreateEvent} />
-//  </Switch>
-// </div>

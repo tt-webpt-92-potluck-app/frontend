@@ -1,6 +1,6 @@
 import React, { useEffect, setState } from "react";
 import axios from "axios";
-import { FormData, Form } from "reactstrap";
+import { FormGroup, Form } from "reactstrap";
 
 export default function EventCard(props) {
   const { potlucks, setPotlucks } = props;
@@ -32,8 +32,9 @@ export default function EventCard(props) {
     });
   };
   return (
-    <FormData>
-      <Form>
+    <Form>
+
+<FormGroup>
         {potlucks.map((potluck) => {
           return (
             <div key={potluck.id}>
@@ -54,7 +55,8 @@ export default function EventCard(props) {
           this.triggerDelete(permit);
           deleteEvent(potluck.id)>Delete this Event</button>
         */}
-      </Form>
-    </FormData>
+
+    </FormGroup>
+    </Form>
   );
 }

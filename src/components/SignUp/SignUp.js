@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import { Form, FormGroup, Label, Input,Button, Card, Container } from 'reactstrap';
 import axios from "axios";
 import UserContext from "../../contexts/UserContext";
-import Navigation from "../navagation/navagation";
+import Navigation from "../Navigation/Navigation";
 import "./SignUp.css"
 import ptimg from "../Login/ptimg.svg"
 
