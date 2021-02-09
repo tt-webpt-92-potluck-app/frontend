@@ -1,4 +1,5 @@
 import React, { useState, useContext } from "react";
+import { useHistory } from "react-router-dom";
 import axios from "axios";
 import { Button, Form, Input, Card, Container, Col } from "reactstrap";
 import 'bootstrap/dist/css/bootstrap.css'
@@ -15,6 +16,7 @@ const Login = (props) => {
 
   const [loginData, setLoginData] = useState(initialState);
   const { setUser } = useContext(UserContext);
+  const history = useHistory();
 
   const changeHandler = (event) => {
     setLoginData({
@@ -23,7 +25,7 @@ const Login = (props) => {
     });
   };
 
-  const submitLogin = (event) => {
+  const submitLogin = async (event) => {
     event.preventDefault();
 	  // console.log(loginData);
     axios.post("https://tt-webpt-92-potluck-app.herokuapp.com/api/login", loginData)
@@ -33,10 +35,10 @@ const Login = (props) => {
         localStorage.setItem("token", res.data.token);
         localStorage.setItem("username", loginData.username);
         localStorage.setItem("id", res.data.id);
+        history.push("/Home");
         setUser({
           username: loginData.username
         });
-        props.history.push("/Home") // need private route path
       })
       .catch((err) => {
         console.error("something went wrong: ", err);
@@ -65,7 +67,7 @@ const Login = (props) => {
                 type="password"
                 id="password"
                 name="password"
-                placeholder="you password"
+                placeholder="your password"
                 className="loginInput"
                 onChange={changeHandler}
                 value={loginData.password}

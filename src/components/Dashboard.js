@@ -8,6 +8,8 @@ import UserContext from "../contexts/UserContext";
 import { Collapse } from "reactstrap";
 import axios from "axios";
 import styled from "styled-components";
+import Organizer from "./OrganizerComp/Organizer";
+import { useHistory } from "react-router-dom";
 
 const CreateNewBtn = styled.button`
   padding: 1rem;
@@ -23,6 +25,7 @@ function Dashboard() {
   const username = localStorage.getItem("username");
   console.log(`Username: ${username}`);
   const [events, setEvents] = useState([]);
+  const history = useHistory();
 
   const getData = () => {
     axiosWithAuth()
@@ -49,7 +52,7 @@ function Dashboard() {
       </div>
       <div className="dashNav">
         <h3>Edit your Potluck Event:</h3>
-        <button>Event Organizer Page</button>
+        <button onClick={() => { history.push('/organizerView')}}>Event Organizer Page</button>
       </div>
       <CreateNewBtn onClick={toggle}>Create a New Potluck</CreateNewBtn>
       <Collapse isOpen={isOpen}>

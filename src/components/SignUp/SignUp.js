@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react';
+import { useHistory } from "react-router-dom";
 import { Form, FormGroup, Label, Input,Button, Card, Container } from 'reactstrap';
 import axios from "axios";
 import UserContext from "../../contexts/UserContext";
@@ -16,6 +17,7 @@ const initialState = {
 const SignUp = (props) => {
     const [newUser, setNewUser] = useState(initialState);
     const user = useContext(UserContext);
+    const history = useHistory();
 
     const changeHandler = (event) => {
         setNewUser({
@@ -33,7 +35,7 @@ const SignUp = (props) => {
             localStorage.setItem("username", newUser.username);
             localStorage.setItem("user_id", user.id);
             console.log(res.data);
-            //props.history.push("/Home");
+            history.push("/");
           })
           .catch((err) => {
             console.error("something went wrong: ", err);

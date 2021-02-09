@@ -8,10 +8,11 @@ import EventContext, { EventProvider } from "./contexts/EventContext";
 import UserContext, { UserProvider } from "./contexts/UserContext";
 import PrivateRoute from "./components/PrivateRoute";
 import Dashboard from "./components/Dashboard";
+import Organizer from "./components/OrganizerComp/Organizer";
 
 
 function App() {
-
+	
 	const event = useContext(EventContext);
 	const [user, setUser] = useState({
 	  username: localStorage.getItem("username"),
@@ -28,6 +29,7 @@ function App() {
 				<Route exact path="/" component={Login}/>
 				<Route exact path="/SignUp" component={SignUp} />
 				<PrivateRoute exact path="/Users" component={UserContext} />
+				<PrivateRoute exact path="/organizerView" component={Organizer} />
 				</Switch>
  		</div>
 		</UserProvider>

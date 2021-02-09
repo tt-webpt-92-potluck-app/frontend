@@ -54,8 +54,9 @@ const NewEventForm = () => {
         console.log("submitted data: ", newPotluck);
       });
     //setEvent([...event, newPotluck]);
+    setPotlucks([...potlucks, newPotluck]);
   };
-  setPotlucks([...potlucks, newPotluck]);
+  //setPotlucks([...potlucks, newPotluck]);
   return (
     <Form onSubmit={handleSubmit}>
       <FormGroup>
