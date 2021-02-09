@@ -11,7 +11,7 @@ import Dashboard from "./components/Dashboard";
 
 
 function App() {
-
+	
 	const event = useContext(EventContext);
 	const [user, setUser] = useState({
 	  username: localStorage.getItem("username"),
