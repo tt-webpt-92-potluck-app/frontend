@@ -8,6 +8,7 @@ import EventContext, { EventProvider } from "./contexts/EventContext";
 import UserContext, { UserProvider } from "./contexts/UserContext";
 import PrivateRoute from "./components/PrivateRoute";
 import Dashboard from "./components/Dashboard";
+import Organizer from "./components/OrganizerComp/Organizer";
 
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
 				<Route exact path="/" component={Login}/>
 				<Route exact path="/SignUp" component={SignUp} />
 				<PrivateRoute exact path="/Users" component={UserContext} />
+				<PrivateRoute exact path="/organizerView" component={Organizer} />
 				</Switch>
  		</div>
 		</UserProvider>
